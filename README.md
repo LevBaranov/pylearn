@@ -1,0 +1,2 @@
+# pylearn
+Для обучения python
