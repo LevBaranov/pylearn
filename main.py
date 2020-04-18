@@ -82,6 +82,10 @@ people = {
 }
 
 
+good_queries = set()
 for query, person in product(queries, people.values()):
     if person == query:
         pprint((query, person))
+        good_queries.add(query)
+print('Запросы вернувшие пустой результат:')
+pprint(set(queries) - good_queries)
