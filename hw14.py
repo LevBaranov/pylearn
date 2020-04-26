@@ -21,12 +21,37 @@ class List(list):
         if (self.__len__() + 1) <= 10:
             return super().insert(position, arg)
 
+
+class UniqueList(list):
+    'Лист с уникальными элементами, чтобы вел себя как множество'
+    def __init__(self, arg):
+        for a in arg:
+            if self.count(arg) == 0:
+                self.append(a)
+    
+    def append(self, arg):
+        if self.count(arg) == 0:
+            return super().append(arg)
+
+    def extend(self, arg):
+        for a in arg:
+            print(self.count(a))
+            if self.count(a) == 0:
+                self.append(a)
+        return self
+    
+    def insert(self, position, arg):
+        if self.count(arg) == 0:
+            return super().insert(position, arg)
+     
+        
+
 if __name__ == '__main__':
-    l = List([1, 2, 3, 4, 5, 6, 7, 8, 9, 0])
+    l = UniqueList([3, 4, 3, 5])
     print(l)
     l.append(4)
     print(l)
-    l.extend([14, 35])
+    l.extend([14, 35, 5])
     print(l)
-    l.insert(4, 45)
+    l.insert(4, 4)
     print(l)
